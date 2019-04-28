@@ -7,6 +7,9 @@ import time
 # N = int(sys.argv[1])
 
 # insert flask annotation here
+app = Flask(__computation__)
+
+@app.route('/')
 
 def computepi(N=10):
     # N: number of decimals
@@ -59,4 +62,6 @@ def computepi(N=10):
     stopDownload = time.time() * 1000.0
     delay = stopDownload - startDownload
     print("Execution time '" + str(delay) + "(ms)")
+    
+    app.run()
 
