@@ -8,6 +8,10 @@ RUN apt-get -y install python3 python3-dev python3-pip build-essential libgmp-de
 
 RUN pip install gmpy2
 
+RUN pip3 install Flask 
+
+RUN pip3 install netifaces 
+
 RUN pip install pystrich
 
 # Exposing Ports
