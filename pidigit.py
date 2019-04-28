@@ -1,4 +1,4 @@
-import sys
+import sysname
 from io import StringIO
 from gmpy2 import xmpz,div,mul,add
 from flask import Flask
@@ -7,7 +7,7 @@ import time
 # N = int(sys.argv[1])
 
 # insert flask annotation here
-app = Flask(__computation__)
+app = Flask(__name__)
 
 @app.route('/')
 
@@ -63,5 +63,5 @@ def computepi(N=10):
     delay = stopDownload - startDownload
     print("Execution time '" + str(delay) + "(ms)")
     
-    app.run()
+    app.run(host='0.0.0.0')
 
