@@ -1,8 +1,10 @@
-import sysname
+import sys
 from io import StringIO
 from gmpy2 import xmpz,div,mul,add
 from flask import Flask
+from flask import request
 import time
+
 
 # N = int(sys.argv[1])
 
@@ -10,8 +12,7 @@ import time
 app = Flask(__name__)
 
 @app.route('/')
-
-def computepi(N=10):
+def computepi():
     # N: number of decimals
 
     f = StringIO()
@@ -23,6 +24,7 @@ def computepi(N=10):
     f10 = xmpz(10)
     n10 = xmpz(-10)
     i = 0
+    N=request.args.get('N',default = 10, type = int)
 
     while True:
         # digit
@@ -55,13 +57,11 @@ def computepi(N=10):
             d  = mul(d, k2 + 1)
             k += 1;
     return(f.getvalue())
+
+@app.route('/ciao')
+def ciao():
+    return("ciao andrea")
     
-    if __name__ == "__main__":
-    startDownload = time.time() * 1000.0
-    result = computepi(2000)
-    stopDownload = time.time() * 1000.0
-    delay = stopDownload - startDownload
-    print("Execution time '" + str(delay) + "(ms)")
-    
+if __name__ == "__main__":
     app.run(host='0.0.0.0')
 
